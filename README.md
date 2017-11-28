@@ -6,11 +6,11 @@ android 性能测试工具
 python + bottle + jquery + nginx
 
 # 功能：
-1，测试apk内存
-2，测试apk cpu
-3，测试apk流量
-4，测试apk频率
-5，截图并验证UI
+### 1，测试apk内存
+### 2，测试apk cpu
+### 3，测试apk流量
+### 4，测试apk频率
+### 5，截图并验证UI
 
 # 测试流程：
 上传apk（自动安装解析）——> 选择测试apk ——> 测试 ——> 测试结果图表

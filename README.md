@@ -27,5 +27,6 @@ python + bottle + jquery + nginx
  ##         location /api/cpuinfo {
  ##              proxy_pass   http://127.0.0.1:8083; 
 
+# 相关功能图
 
 功能还在完善，腾讯优测是我的目标，谢谢关注^_^

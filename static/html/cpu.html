@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Android性能测试中心</title>
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/static/js/echarts.common.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/dark.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://127.0.0.1">Android性能测试中心</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/monkey">浅度遍历</a></li>
+                <li><a href="/apklist">应用列表</a></li>
+                <li><a href="/memhtml">内存监控</a></li>
+                <li><a href="/cpuhtml">CPU监控</a></li>
+                <li><a href="/wifinfo">流量监控</a></li>
+                <li><a href="/wifinfo">GFX监控</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--mem 图表-->
+<!--<div class="panel panel-info">-->
+        <!--<div class="panel-heading">-->
+            <!--<h2 class="panel-title">手机信息:</h2>-->
+        <!--</div>-->
+        <!--<div class="panel-body">-->
+            <!--<div id="main1" style="width: 400px;height:100px;"></div>-->
+        <!--</div>-->
+<!--</div>-->
+
+<div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title">CPU信息:</h2>
+        </div>
+        <div class="panel-body">
+            <div id="cpudata" style="width: 600px;height:600px;"></div>
+    <script type="text/javascript">
+    var dom = document.getElementById("cpudata");
+    var myChart = echarts.init(dom);
+    option = null;
+    var url = 'http://127.0.0.1:8083/api/cpuinfo';
+    var proxyurl = '/api/cpuinfo';
+
+    $(function(){
+        $.ajax({
+            type: "GET",
+            url: proxyurl,
+            async: true,
+            dataType: "json",
+            success: function(response, status, xhr){
+                    console.log('状态为：' + status + ',状态是：' + xhr.statusText);
+                    console.log(response);
+                    data = response.user_data;
+                    var dateList = data.map(function (item) {
+                        return item[0];
+                    });
+                    var valueList = data.map(function (item) {
+                    return item[1];
+                    });
+
+                    myChart.setOption({
+
+                    visualMap: [{
+        show: false,
+        type: 'continuous',  // 定义为连续型 viusalMap
+        seriesIndex: 0,
+        min: 0,
+        max: 400
+    }],
+
+    title: [{
+        left: 'center',
+        text: 'CPU数据'
+    }],
+    tooltip: {
+        trigger: 'axis'  //触发类型
+    },
+    xAxis: [{
+        data: dateList
+    }],
+    yAxis: [{
+        splitLine: {show: true}
+    }],
+    grid: [{
+        bottom: '20%'
+    }, {
+        top: '20%'
+    }],
+    series: [{
+        type: 'line',
+        showSymbol: true,
+        data: valueList
+    }]
+
+                    })
+                }
+            })
+        });
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+    </script>
+    </div>
+</div>
+</body>
+</html>

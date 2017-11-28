@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>安卓性能监控数据</title>
+    <script src="/static/js/echarts.common.min.js"></script>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/dark.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'index' %}">Android压测数据中心</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{% url 'get_all_info' %}">全信息监控</a></li>
+                <li><a href="{% url 'mem_info' %}">内存监控</a></li>
+                <li><a href="{% url 'cpu_info' %}">CUP监控</a></li>
+                <li><a href="{% url 'getFlow' %}">流量监控</a></li>
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title">使用须知:</h2>
+        </div>
+        <div class="panel-body">
+
+            <p>
+        上传测试apk：
+        <form action="/upload" method="post" enctype="multipart/form-data">
+<input type='text' name='textfield' id='textfield' class='txt' />
+<input type='button' class='btn' value='浏览...' />
+<input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+<input type="submit" name="submit" class="btn btn-default" value="上传文件" onclick=""/>
+</form></p>
+
+            <p>如果不知道设备信息以及包名,请点击按钮获取相关信息
+                <button type="button" class="btn btn-default" id="get_third_packagename">获取信息</button>
+            </p>
+            <p>如果不知道应用对应的包名,请打开应用后点击右侧按钮
+                <button type="button" class="btn btn-default" id="get_cur_packagename">获取当前包名</button>
+            <div id="pkinfo"><span id="package_name"></span> <span id="activity_name"></span></div>
+            </p>
+        </div>
+</div>
+<!--第三方包列表的容器-->
+    <div id="third_list_container">
+        <div class="panel-heading" id="pk_list_header"></div>
+        <div class="panel-body">
+            <ul class="list-group" id="pk_list">
+            </ul>
+        </div>
+    </div>
+<!-- ECharts容器 -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <div id="main" style="width: 100%;height: 500px;">
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -30,5 +30,6 @@ python + bottle + jquery + nginx
  2，配置解决上传文件过大问题：
     在http{}段中加入 client_max_body_size 20m; 20m为允许最大上传的大小。
 ### 相关功能图
+https://github.com/DQQ/ApkPerforTools/blob/master/result/IMG68.jpeg
 
 功能还在完善，腾讯优测是我的目标，谢谢关注^_^

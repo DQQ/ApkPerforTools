@@ -1,4 +1,4 @@
-### ApkPerforTools（天月平台）
+### ApkPerforTools（天月）
 android 性能测试工具
 
 ### 实现技术：

@@ -33,4 +33,4 @@ python + bottle + jquery + nginx
 ###### https://github.com/DQQ/ApkPerforTools/blob/master/result/IMG68.jpeg
 ###### https://github.com/DQQ/ApkPerforTools/blob/master/result/WX20171219-144049.png
 
-功能还在完善，腾讯优测是我的目标，谢谢关注^_^
+功能还在完善，谢谢关注^_^

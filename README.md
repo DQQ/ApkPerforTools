@@ -29,8 +29,7 @@ python + bottle + jquery + nginx
  ######              proxy_pass   http://127.0.0.1:8083; 
  2，配置解决上传文件过大问题：
     在http{}段中加入 client_max_body_size 20m; 20m为允许最大上传的大小。
-### 相关功能图
-###### https://github.com/DQQ/ApkPerforTools/blob/master/result/IMG68.jpeg
-###### https://github.com/DQQ/ApkPerforTools/blob/master/result/WX20171219-144049.png
+### 使用说明
+###### https://github.com/DQQ/ApkPerforTools/blob/master/android%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf
 
 功能还在完善，谢谢关注^_^
